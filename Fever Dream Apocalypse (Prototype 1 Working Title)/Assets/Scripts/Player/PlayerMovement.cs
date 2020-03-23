@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     //Determines if the player is grounded
     private bool isGrounded;
 
+    //Sound effect played when player jumps
+    [SerializeField] private AudioSource jumpSound;
+
     // Update is called once per frame
     void Update()
     {
@@ -51,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0f), ForceMode.Impulse);
+            jumpSound.Play();
         }
     }
 
