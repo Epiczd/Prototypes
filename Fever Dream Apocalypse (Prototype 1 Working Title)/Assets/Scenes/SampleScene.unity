@@ -548,7 +548,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: fcae28503f069e044a83bb4d681a3d97,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -113181020801827196, guid: fcae28503f069e044a83bb4d681a3d97,
         type: 3}
@@ -1178,7 +1178,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217678161}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 87be07c880cc7f54fab6ea952d4b39b2, type: 3}
@@ -1459,7 +1459,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: f7ae69ca61cce704285a62de6d1ecaf9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -113181020801827196, guid: f7ae69ca61cce704285a62de6d1ecaf9,
         type: 3}
@@ -1471,6 +1471,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 48e13e21a76396f499eca2524402845e, type: 2}
+    - target: {fileID: 4695666576454475813, guid: f7ae69ca61cce704285a62de6d1ecaf9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 8833720299871980622, guid: f7ae69ca61cce704285a62de6d1ecaf9,
         type: 3}
       propertyPath: m_LocalPosition.x
