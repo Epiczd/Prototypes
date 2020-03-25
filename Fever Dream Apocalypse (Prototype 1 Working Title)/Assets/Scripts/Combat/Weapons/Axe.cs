@@ -14,7 +14,6 @@ public class Axe : MonoBehaviour
     void Update()
     {
         SwingAxe();
-        Debug.Log(timeBtwAttack);
 
         while (timeBtwAttack <= 1f)
         {
