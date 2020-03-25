@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : WaveManager
 {
     //Amount of health the enemy has
     [SerializeField] private float health;
@@ -21,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     //When the enemy reaches zero health, it will die
     void EnemyDeath()
     {
+        enemiesKilled++;
         Destroy(gameObject);
     }
 }
