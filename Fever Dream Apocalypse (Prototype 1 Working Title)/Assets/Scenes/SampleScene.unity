@@ -638,6 +638,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 323069161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &323069163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323069162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb4ae3b3caa49848bf93b65bdb2daeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDamage: 5
+  maxDamage: 50
+  range: 100
+  playerCamera: {fileID: 2121658385}
+  muzzleFlash: {fileID: 0}
+  gunShot: {fileID: 916309503}
 --- !u!1 &476019983
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +786,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1402,6 +1420,7 @@ GameObject:
   - component: {fileID: 1710307801}
   - component: {fileID: 1710307804}
   - component: {fileID: 1710307800}
+  - component: {fileID: 1710307805}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1511,6 +1530,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1710307805
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710307798}
+  serializedVersion: 2
+  m_Mass: 15
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1810580121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f7ae69ca61cce704285a62de6d1ecaf9,
