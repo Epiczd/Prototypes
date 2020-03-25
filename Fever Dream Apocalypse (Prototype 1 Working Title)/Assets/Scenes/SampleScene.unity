@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 131304639}
   - component: {fileID: 131304638}
   - component: {fileID: 131304642}
+  - component: {fileID: 131304643}
   m_Layer: 0
   m_Name: PlayerShell
   m_TagString: Player
@@ -248,6 +249,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 100
   jumpSound: {fileID: 719513631}
+--- !u!114 &131304643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131304636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f625d7fba1149e43bb787ba84c41a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &131953613
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +431,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313106209}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &313106212
 Camera:
   m_ObjectHideFlags: 0
@@ -866,6 +880,7 @@ GameObject:
   - component: {fileID: 678320028}
   - component: {fileID: 678320027}
   - component: {fileID: 678320026}
+  - component: {fileID: 678320033}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -1009,6 +1024,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678320024}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &678320033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678320024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3d6fe600775264c84186ffb93a0785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1366,7 @@ GameObject:
   - component: {fileID: 763055759}
   - component: {fileID: 763055758}
   - component: {fileID: 763055757}
+  - component: {fileID: 763055764}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -1481,6 +1510,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763055755}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &763055764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763055755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3d6fe600775264c84186ffb93a0785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &849013105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1562,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849013105}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &849013108
 Camera:
   m_ObjectHideFlags: 0
@@ -1767,7 +1809,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210056722}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1210056725
 Camera:
   m_ObjectHideFlags: 0
@@ -2070,6 +2112,7 @@ GameObject:
   - component: {fileID: 1386060399}
   - component: {fileID: 1386060398}
   - component: {fileID: 1386060397}
+  - component: {fileID: 1386060404}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -2213,6 +2256,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386060395}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1386060404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386060395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3d6fe600775264c84186ffb93a0785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &1710307798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,6 +2285,7 @@ GameObject:
   - component: {fileID: 1710307800}
   - component: {fileID: 1710307805}
   - component: {fileID: 1710307806}
+  - component: {fileID: 1710307807}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2372,6 +2429,19 @@ MonoBehaviour:
   enemySpeed: 5
   lineOfSight: 10
   target: {fileID: 131304637}
+--- !u!114 &1710307807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710307798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3d6fe600775264c84186ffb93a0785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!1 &1810580121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: f7ae69ca61cce704285a62de6d1ecaf9,
@@ -2611,7 +2681,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000086078}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &2000086081
 Camera:
   m_ObjectHideFlags: 0
