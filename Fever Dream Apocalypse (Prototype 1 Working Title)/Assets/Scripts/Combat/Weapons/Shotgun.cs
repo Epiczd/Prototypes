@@ -40,9 +40,8 @@ public class Shotgun : MonoBehaviour
 
     void Shooting()
     {
-        /*
         muzzleFlash.Play();
-        */
+
 
         RaycastHit hit;
 
