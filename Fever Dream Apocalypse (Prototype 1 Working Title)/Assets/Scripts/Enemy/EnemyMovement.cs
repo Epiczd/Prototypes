@@ -24,8 +24,6 @@ public class EnemyMovement : MonoBehaviour
      */
     void Update()
     {
-        Debug.Log(playerDetected);
-
         CheckForPlayer();
 
         if (playerDetected)

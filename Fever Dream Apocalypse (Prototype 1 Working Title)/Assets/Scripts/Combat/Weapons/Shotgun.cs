@@ -61,6 +61,9 @@ public class Shotgun : MonoBehaviour
     //Determines if the player can reload
     private bool reloaded;
 
+    //Time animation needs to finish
+    private float animationTime;
+
     /* On start, the maxClip, and maxMag are set,
      * Based on the values set in the inspector
      */
@@ -78,10 +81,28 @@ public class Shotgun : MonoBehaviour
 
         if (Input.GetButtonDown("Attack") && clip > 0)
         {
+            animationTime++;
+            gunAnimator.SetBool("Shooting", true);
             Shooting();
+        }
+        else if(animationTime == 0f)
+        {
+            gunAnimator.SetBool("Shooting", false);
+            gunAnimator.SetBool("Reloading", false);
+        }
+
+        if (animationTime >= 0f)
+        {
+            animationTime -= Time.deltaTime * 2.5f;
+        }
+        else
+        {
+            animationTime = 0f;
         }
 
         Reload(true);
+
+        Debug.Log(animationTime);
     }
 
     /* When the player fires, by pressing attack (left mouse)
@@ -97,7 +118,7 @@ public class Shotgun : MonoBehaviour
 
         if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, range))
         {
-            Debug.Log(hit.distance);
+            Debug.Log(animationTime);
 
             EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
 
@@ -147,6 +168,8 @@ public class Shotgun : MonoBehaviour
 
         if(clip <= 0 && canReload == true || Input.GetButtonDown("Reload") && clip < maxClip && canReload == true)
         {
+            gunAnimator.SetBool("Shooting", true);
+            animationTime += 5f;
             reloaded = true;
         }
 
