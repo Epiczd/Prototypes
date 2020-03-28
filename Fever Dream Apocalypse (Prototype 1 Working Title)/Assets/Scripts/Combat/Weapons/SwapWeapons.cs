@@ -8,7 +8,7 @@ public class SwapWeapons : MonoBehaviour
     [SerializeField] private GameObject[] weapons;
 
     //Determines if the primary weapon is active
-    private bool primaryActive = true;
+    protected static bool primaryActive = true;
 
     // Update is called once per frame
     void Update()
