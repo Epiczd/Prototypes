@@ -65,7 +65,11 @@ public class Axe : MonoBehaviour
         {
             EnemyHealth enemy = collision.transform.GetComponent<EnemyHealth>();
 
+            FakeEnemy fake = collision.transform.GetComponent<FakeEnemy>();
+
             enemy.TakeDamage(damage);
+
+            fake.UpdateEnemy(true);
         }
     }
 }

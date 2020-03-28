@@ -122,6 +122,8 @@ public class Shotgun : MonoBehaviour
 
             EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
 
+            FakeEnemy fake = hit.transform.GetComponent<FakeEnemy>();
+
             if(enemy != null)
             {
                 if(hit.distance < 3f)
@@ -132,6 +134,11 @@ public class Shotgun : MonoBehaviour
                 {
                     enemy.TakeDamage(minDamage);
                 }
+            }
+
+            if(fake != null)
+            {
+                fake.UpdateEnemy(true);
             }
 
             if(hit.rigidbody != null)
