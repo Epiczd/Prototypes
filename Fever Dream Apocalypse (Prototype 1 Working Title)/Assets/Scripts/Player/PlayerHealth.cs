@@ -8,8 +8,20 @@ public class PlayerHealth : MonoBehaviour
     //Amount of health the player has
     [SerializeField] private float health;
 
+    //The players healthbar
+    [SerializeField] private Healthbar healthBar;
+
+    //The players max health
+    private float maxHealth;
+
     //Current Player Health displayed in the HUD
     protected static float currentPlayerHealth;
+
+    void Start()
+    {
+        maxHealth = health;
+        healthBar.SetMaxHealth(maxHealth);
+    }
 
     //Updates the current player health
     void Update()
@@ -21,6 +33,8 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+
+        healthBar.SetHealth(health);
 
         if(health <= 0f)
         {
