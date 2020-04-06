@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     //How high the player jumps
     [SerializeField] private float jumpForce = 8f;
 
+    //Checks if the player is facing left or right
+    protected static bool facingLeft = false;
+
     //Checks if the player is grounded
     private bool isGrounded = false;
 
@@ -18,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Jump();
-
-        print(isGrounded);
     }
 
     //Method that allows the player to move
@@ -30,6 +31,15 @@ public class PlayerMovement : MonoBehaviour
 
         //Moves the player when the player inputs movement
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * x);
+
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            facingLeft = false;
+        }
+        else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            facingLeft = true;
+        }
     }
 
     void Jump()
