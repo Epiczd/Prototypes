@@ -7,6 +7,9 @@ public class Punch : PlayerMovement
     //The player's fist (0 is right fist, 1 is left fist)
     [SerializeField] private GameObject[] playersFist;
 
+    //Amount of damage dealt with a punch
+    protected static float punchDamage = 5f;
+
     //On start, the player's fist is not drawn, and is disabled
     void Start()
     {
