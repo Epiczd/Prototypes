@@ -12,21 +12,21 @@ public class Groundcheck : PlayerMovement
         transform.position = savedPosition;
     }
 
-    //Checks when the player enters a collider
-    void OnTriggerEnter2D(Collider2D collision)
+    //Checks for entering the collision
+    void OnCollisionEnter2D(Collision2D collision)
     {
         //If the player is colliding with the ground, isGrounded is true
-        if (collision.CompareTag("Ground"))
+        if(collision.collider.tag == "Ground")
         {
             isGrounded = true;
-        }
+        }    
     }
 
-    //Checks when the player exits a collider
-    void OnTriggerExit2D(Collider2D collision)
+    //Checks for exiting the collision
+    void OnCollisionExit2D(Collision2D collision)
     {
-        //If the player is colliding with the ground, isGrounded is false
-        if (collision.CompareTag("Ground"))
+        //If the player is NOT colliding with the ground, isGrounded is false
+        if (collision.collider.tag == "Ground")
         {
             isGrounded = false;
         }

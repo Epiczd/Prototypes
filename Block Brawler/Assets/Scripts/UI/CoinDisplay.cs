@@ -12,6 +12,7 @@ public class CoinDisplay : Coin
     void Update()
     {
         UpdateDisplay();
+        print(playerCoins);
     }
 
     //Updates the amount of coins the player has
