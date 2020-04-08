@@ -39,8 +39,6 @@ public class Punch : PlayerMovement
 
         staminaBar.SetStamina(Stamina);
 
-        print(Stamina);
-
         if(Stamina > 0f)
         {
             canAttack = true;

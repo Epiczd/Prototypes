@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : EnemyHealth
+public class EnemyMovement : MonoBehaviour
 {
     //Speed the enemy moves
     [SerializeField] private float moveSpeed = 10f;
@@ -18,10 +18,7 @@ public class EnemyMovement : EnemyHealth
     void Update()
     {
         //As long as the enemy is alive, it will move
-        if(isDead == false)
-        {
-            Movement();
-        }
+        Movement();
     }
 
     //Allows the enemy to move

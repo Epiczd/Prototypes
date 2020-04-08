@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Transform playerSpawn;
 
     //The current amount of health the player has, displayed in the H.U.D
-    protected static float currentHealth;
+    public static float currentHealth;
 
     //On start, the current health is set to health
     void Start()
@@ -26,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
         {
             Death();
         }
+
+        print(currentHealth);
     }
 
     //When the players health is 0, they will die and respawn

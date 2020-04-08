@@ -7,9 +7,6 @@ public class EnemyHealth : Punch
     //Amount of health the enemy has
     [SerializeField] private float health = 10f;
 
-    //Determines if the enemy is dead
-    protected static bool isDead = false;
-
     //Time used to freeze the enemy
     private float waitTime = 1f;
 
@@ -37,10 +34,11 @@ public class EnemyHealth : Punch
     //Activated when the enemy dies
     void Death()
     {
-        /* If the enemy dies, isDead is set to true,
-         * The enemy falls over dead, and the enemy stops moving
+        /* If the enemy dies, The enemy falls over dead, and the enemy stops moving,
+         * The enemy will also stop doing damage, and will just lay on the floor
          */
-        isDead = true;
+        GetComponent<EnemyMovement>().enabled = false;
+        gameObject.tag = "Untagged";
         gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 5f, ForceMode2D.Force);
         waitTime -= Time.deltaTime;
 
@@ -49,5 +47,6 @@ public class EnemyHealth : Punch
             waitTime = 0f;
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
         }
+        
     }
 }

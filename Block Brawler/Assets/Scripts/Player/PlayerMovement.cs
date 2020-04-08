@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     protected static bool facingLeft = false;
 
     //Checks if the player is grounded
-    private bool isGrounded = false;
+    protected static bool isGrounded = false;
 
     // Update is called once per frame
     void Update()
@@ -51,23 +51,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Checks when the player enters a collider
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        //If the player is colliding with the ground, isGrounded is true
-        if(collision.collider.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-    }
-
-    //Checks when the player exits a collider
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        //If the player is colliding with the ground, isGrounded is false
-        if(collision.collider.tag == "Ground")
-        {
-            isGrounded = false;
-        }
-    }
 }

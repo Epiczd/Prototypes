@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamage : PlayerHealth
+public class EnemyDamage : MonoBehaviour
 {
     //Amount of damage the enemy deals
     [SerializeField] private float damage = 1f;
@@ -11,9 +11,11 @@ public class EnemyDamage : PlayerHealth
     void OnCollisionEnter2D(Collision2D collision)
     {
         //If the enemy attacks the player, they will take damage
-        if(collision.collider.tag == "Player")
+        if(collision.collider.tag == "Player" && gameObject.tag == "Enemy")
         {
-            currentHealth -= damage;
+            PlayerHealth.currentHealth -= damage;
         }
     }
+    
+
 }
