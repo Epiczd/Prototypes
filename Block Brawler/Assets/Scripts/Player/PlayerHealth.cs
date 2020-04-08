@@ -26,8 +26,6 @@ public class PlayerHealth : MonoBehaviour
         {
             Death();
         }
-
-        print(currentHealth);
     }
 
     //When the players health is 0, they will die and respawn
