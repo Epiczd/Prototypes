@@ -8,14 +8,18 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float health = 3f;
 
     //The players spawn location
-    [SerializeField] private Transform playerSpawn;
+    [SerializeField] protected Transform playerSpawn;
 
     //The current amount of health the player has, displayed in the H.U.D
     public static float currentHealth;
 
+    //The players max health
+    protected static float maxHealth;
+
     //On start, the current health is set to health
     void Start()
     {
+        maxHealth = health;
         currentHealth = health;
     }
 
@@ -27,7 +31,15 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
 
-        print(currentHealth);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        //If the player enters the death plain, they will die
+        if (collision.CompareTag("DeathPlain"))
+        {
+            Death();
+        }
     }
 
     //When the players health is 0, they will die and respawn

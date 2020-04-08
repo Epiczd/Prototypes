@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Fist
   - Enemy
+  - DeathPlain
   layers:
   - Default
   - TransparentFX
