@@ -28,6 +28,12 @@ public class HealthDisplay : PlayerHealth
     {
         switch (currentHealth)
         {
+            case 3:
+                for (int i = 0; i < heart.Length; i++)
+                {
+                    heart[i].enabled = true;
+                }
+                break;
             case 2:
                 heart[2].enabled = false;
                 heart[1].enabled = true;
@@ -38,10 +44,7 @@ public class HealthDisplay : PlayerHealth
                 heart[0].enabled = true;
                 break;
             case 0:
-                for (int i = 0; i < heart.Length; i++)
-                {
-                    heart[i].enabled = true;
-                }
+                heart[0].enabled = false;
                 break;
         }
     }
