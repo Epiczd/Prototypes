@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ObjectiveChecker : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class ObjectiveChecker : MonoBehaviour
     //On Start, the next level button is disabled
     void Start()
     {
+        requiredObjectivesCompleted = 0;
         nextLvlButton.SetActive(false);
     }
 
