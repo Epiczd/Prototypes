@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : PlayerLives
 {
     //Amount of health the player has
     [SerializeField] private float health = 3f;
@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Death();
         }
-
+        print(lives);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -45,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
     //When the players health is 0, they will die and respawn
     void Death()
     {
+        lives--;
         transform.position = playerSpawn.transform.position;
         currentHealth = health;
     }
