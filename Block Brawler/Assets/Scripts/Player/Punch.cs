@@ -13,6 +13,9 @@ public class Punch : PlayerMovement
     //The player's stamina
     [SerializeField] private float Stamina = 5f;
 
+    //Sound Effect when punching
+    [SerializeField] private AudioSource punchSound;
+
     //The player's maximum amount of stamina
     private float maxStamina;
 
@@ -62,14 +65,14 @@ public class Punch : PlayerMovement
         else
         {
             playersFist[0].SetActive(false);
-            
-            if(Stamina < maxStamina)
+
+            if (Stamina < maxStamina)
             {
                 Stamina += Time.deltaTime * 2.5f;
             }
         }
 
-        if(Input.GetButton("Attack") && facingLeft && canAttack)
+        if (Input.GetButton("Attack") && facingLeft && canAttack)
         {
             playersFist[1].SetActive(true);
 
@@ -84,5 +87,12 @@ public class Punch : PlayerMovement
                 Stamina += Time.deltaTime * 2.5f;
             }
         }
+
+        //Plays the sound effect when punching
+        if (Input.GetButtonDown("Attack"))
+        {
+            punchSound.Play();
+        }
+
     }
 }
