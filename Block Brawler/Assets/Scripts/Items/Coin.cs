@@ -7,6 +7,9 @@ public class Coin : MonoBehaviour
     //The Coin
     [SerializeField] private GameObject coin;
 
+    //Coin Sound Effect
+    [SerializeField] private AudioSource coinSound;
+
     //Amount of coins the player has
     protected static int playerCoins;
 
@@ -25,6 +28,7 @@ public class Coin : MonoBehaviour
          */
         if (collision.CompareTag("Player"))
         {
+            coinSound.Play();
             playerCoins++;
             coin.SetActive(false);
         }    
