@@ -11,6 +11,9 @@ public class Objective : ObjectiveChecker
     //Checks if the objective is required or not
     [SerializeField] private bool requiredObjective;
 
+    //Sound that plays when the objective is finished
+    [SerializeField] private AudioSource completionSound;
+
     // On Start, the checkmark, and button are disabled
     void Start()
     {
@@ -28,12 +31,14 @@ public class Objective : ObjectiveChecker
         {
             if (requiredObjective)
             {
+                completionSound.Play();
                 requiredObjectivesCompleted++;
                 checkMark.enabled = true;
                 gameObject.SetActive(false);
             }
             else
             {
+                completionSound.Play();
                 checkMark.enabled = true;
                 gameObject.SetActive(false);
             }

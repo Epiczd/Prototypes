@@ -10,6 +10,9 @@ public class ObjectiveChecker : MonoBehaviour
     //Button that takes player to the next level
     [SerializeField] private GameObject nextLvlButton;
 
+    //Sound that plays when the objective is finished
+    [SerializeField] private AudioSource completionSound;
+
     //Amount of required objectives completed
     protected static int requiredObjectivesCompleted;
 
@@ -34,6 +37,7 @@ public class ObjectiveChecker : MonoBehaviour
          */
         if(requiredObjectivesCompleted == requiredObjectives)
         {
+            //completionSound.Play();
             nextLvlButton.SetActive(true);
         }
     }
