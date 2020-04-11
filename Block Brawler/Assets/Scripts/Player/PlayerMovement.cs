@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     //How high the player jumps
     [SerializeField] private float jumpForce = 8f;
 
+    //Jump Sound Effect
+    [SerializeField] private AudioSource jumpSound;
+
     //Checks if the player is facing left or right
     protected static bool facingLeft = false;
 
@@ -48,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpSound.Play();
         }
     }
 
