@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Punch : PlayerMovement
 {
-    //The player's fist (0 is right fist, 1 is left fist)
+    //The player's fist (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
     [SerializeField] private GameObject[] playersFist;
 
     //Player's stamina bar
@@ -19,7 +20,7 @@ public class Punch : PlayerMovement
     //Distance the rocket fist can go
     [SerializeField] private float rocketDistance;
 
-    //Spawn points for the fists
+    //Spawn points for the fists (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
     [SerializeField] private Transform[] fistSpawn;
 
     //Rocketforce
@@ -40,8 +41,10 @@ public class Punch : PlayerMovement
     //On start, the player's fist is not drawn, and is disabled
     void Start()
     {
-        playersFist[0].SetActive(false);
-        playersFist[1].SetActive(false);
+        for (int i = 0; i < playersFist.Length; i++)
+        {
+            playersFist[i].SetActive(false);
+        }
 
         maxStamina = Stamina;
         staminaBar.SetMaxStamina(maxStamina);
@@ -76,37 +79,116 @@ public class Punch : PlayerMovement
                 playersFist[i].transform.position = fistSpawn[i].position;
             }
 
-            //If the player presses left mouse, or f, they will attack
-            if (Input.GetButton("Attack") && facingLeft == false && canAttack)
+            switch (playerDirection)
             {
-                playersFist[0].SetActive(true);
+                default:
+                    for (int i = 0; i < playersFist.Length; i++)
+                    {
+                        playersFist[i].SetActive(false);
+                    }
 
-                Stamina -= 0.1f;
-            }
-            else
-            {
-                playersFist[0].SetActive(false);
+                    break;
+                case "Right":
 
-                if (Stamina < maxStamina)
-                {
-                    Stamina += Time.deltaTime * 2.5f;
-                }
-            }
+                    //If the player presses left mouse, or f, they will attack
+                    if (Input.GetButton("Attack") && canAttack)
+                    {
+                        playersFist[0].SetActive(true);
 
-            if (Input.GetButton("Attack") && facingLeft && canAttack)
-            {
-                playersFist[1].SetActive(true);
+                        for (int i = 1; i < playersFist.Length; i++)
+                        {
+                            playersFist[i].SetActive(false);
+                        }
 
-                Stamina -= 0.1f;
-            }
-            else
-            {
-                playersFist[1].SetActive(false);
+                        Stamina -= Time.deltaTime * 2.5f;
+                    }
+                    else
+                    {
+                        playersFist[0].SetActive(false);
 
-                if (Stamina < maxStamina)
-                {
-                    Stamina += Time.deltaTime * 2.5f;
-                }
+                        if (Stamina < maxStamina)
+                        {
+                            Stamina += Time.deltaTime * 2.5f;
+                        }
+                    }
+                    break;
+                case "Left":
+
+                    if (Input.GetButton("Attack") && canAttack)
+                    {
+                        playersFist[1].SetActive(true);
+
+                        for (int i = 0; i > -1; i--)
+                        {
+                            playersFist[i].SetActive(false);
+                        }
+                        
+                        for (int i = 2; i < playersFist.Length; i++)
+                        {
+                            playersFist[i].SetActive(false);
+                        }
+                        
+                        Stamina -= Time.deltaTime * 2.5f;
+                    }
+                    else
+                    {
+                        playersFist[1].SetActive(false);
+
+                        if (Stamina < maxStamina)
+                        {
+                            Stamina += Time.deltaTime * 2.5f;
+                        }
+                    }
+                    break;
+                case "Up":
+                    if (Input.GetButton("Attack")&& canAttack)
+                    {
+                        playersFist[2].SetActive(true);
+
+                        for (int i = 1; i > -1; i--)
+                        {
+                            playersFist[i].SetActive(false);
+                        }
+
+                        for (int i = 3; i < playersFist.Length; i++)
+                        {
+                            playersFist[i].SetActive(false);
+                        }
+
+                        Stamina -= Time.deltaTime * 2.5f;
+                    }
+                    else
+                    {
+                        playersFist[2].SetActive(false);
+
+                        if (Stamina < maxStamina)
+                        {
+                            Stamina += Time.deltaTime * 2.5f;
+                        }
+                    }
+                    break;
+                case "Down":
+                    if (Input.GetButton("Attack") && canAttack)
+                    {
+                        playersFist[3].SetActive(true);
+
+                        for (int i = 2; i > -1; i--)
+                        {
+                            playersFist[i].SetActive(false);
+                        }
+
+                        Stamina -= Time.deltaTime * 2.5f;
+                    }
+                    else
+                    {
+                        playersFist[3].SetActive(false);
+
+                        if (Stamina < maxStamina)
+                        {
+                            Stamina += Time.deltaTime * 2.5f;
+                        }
+                    }
+                    break;
             }
 
             //Plays the sound effect when punching
@@ -117,41 +199,110 @@ public class Punch : PlayerMovement
         }
         else
         {
+            //Checks which power up is active
             switch (Powerup.powerName)
             {
+                //Called if rocket fist is active
                 case "Rocket Fist":
+
+                    /* If the powerup still has time, it will call this,
+                     * And allow the player to fire in any direction they want
+                     */
                     if(Powerup.powerTime > 0)
                     {
-                        if(Input.GetButtonDown("Attack") && facingLeft == false)
+                        //Checks which direction the player is firing
+                        switch (playerDirection)
                         {
-                            playersFist[0].SetActive(true);
+                            case "Right":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[0].SetActive(true);
 
-                            playersFist[1].SetActive(false);
+                                    for (int i = 1; i < playersFist.Length; i++)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
 
-                            playersFist[0].transform.position = fistSpawn[0].position;
+                                    playersFist[0].transform.position = fistSpawn[0].position;
 
-                            fired = true;
-                        }
+                                    fired = true;
+                                }
 
-                        if (fired && facingLeft == false)
-                        {
-                            playersFist[0].transform.Translate(Vector2.right * Time.smoothDeltaTime * rocketForce);
-                        }
+                                if (fired)
+                                {
+                                    playersFist[0].transform.Translate(Vector2.right * Time.smoothDeltaTime * rocketForce);
+                                }
+                                break;
+                            case "Left":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[1].SetActive(true);
 
-                        if(Input.GetButtonDown("Attack") && facingLeft)
-                        {
-                            playersFist[1].SetActive(true);
+                                    for (int i = 0; i > -1; i--)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
 
-                            playersFist[0].SetActive(false);
+                                    for (int i = 2; i < playersFist.Length; i++)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
 
-                            playersFist[1].transform.position = fistSpawn[1].position;
+                                    playersFist[1].transform.position = fistSpawn[1].position;
 
-                            fired = true;
-                        }
+                                    fired = true;
+                                }
 
-                        if(fired && facingLeft)
-                        {
-                            playersFist[1].transform.Translate(Vector2.left * Time.smoothDeltaTime * rocketForce);
+                                if (fired)
+                                {
+                                    playersFist[1].transform.Translate(Vector2.left * Time.smoothDeltaTime * rocketForce);
+                                }
+                                break;
+                            case "Up":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[2].SetActive(true);
+
+                                    for (int i = 1; i > -1; i--)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    for (int i = 3; i < playersFist.Length; i++)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    playersFist[2].transform.position = fistSpawn[2].position;
+
+                                    fired = true;
+                                }
+
+                                if (fired)
+                                {
+                                    playersFist[2].transform.Translate(Vector2.up * Time.smoothDeltaTime * rocketForce);
+                                }
+                                break;
+                            case "Down":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[3].SetActive(true);
+
+                                    for (int i = 2; i > -1; i--)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    playersFist[3].transform.position = fistSpawn[3].position;
+
+                                    fired = true;
+                                }
+
+                                if (fired)
+                                {
+                                    playersFist[3].transform.Translate(Vector2.down * Time.smoothDeltaTime * rocketForce);
+                                }
+                                break;
                         }
                     }
                     break;

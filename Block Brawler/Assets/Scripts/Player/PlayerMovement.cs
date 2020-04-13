@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
     //Checks if the player is facing left or right
     protected static bool facingLeft = false;
 
+    //Checks if the player is looking up or down
+    protected static bool facingUp = false;
+
+    //Direction the player is facing
+    protected static string playerDirection = "Right";
+
     //Checks if the player is grounded
     protected static bool isGrounded = false;
 
@@ -35,14 +41,23 @@ public class PlayerMovement : MonoBehaviour
         //Moves the player when the player inputs movement
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * x);
 
-        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetButton("Right"))
         {
-            facingLeft = false;
+            playerDirection = "Right";
         }
-        else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        else if(Input.GetButton("Left"))
         {
-            facingLeft = true;
+            playerDirection = "Left";
         }
+        else if(Input.GetButton("Up"))
+        {
+            playerDirection = "Up";
+        }
+        else if (Input.GetButton("Down"))
+        {
+            playerDirection = "Down";
+        }
+
     }
 
     void Jump()
