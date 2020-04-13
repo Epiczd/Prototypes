@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     //Checks if the player is grounded
     protected static bool isGrounded = false;
 
+    //Checks if the player is on a wall
+    protected static bool onWall = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -62,8 +65,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        //If the player presses space, and is grounded, they will jump
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        //If the player presses space, and is grounded or on a wall, they will jump
+        if(Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && onWall)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpSound.Play();

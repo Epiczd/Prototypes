@@ -8,6 +8,7 @@ TagManager:
   - Fist
   - Enemy
   - DeathPlain
+  - Wall
   layers:
   - Default
   - TransparentFX
