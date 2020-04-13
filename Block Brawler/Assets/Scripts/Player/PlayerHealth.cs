@@ -30,6 +30,11 @@ public class PlayerHealth : PlayerLives
         {
             Death();
         }
+
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

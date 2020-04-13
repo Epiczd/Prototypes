@@ -33,7 +33,6 @@ public class PowerupDisplay : Powerup
     void Update()
     {
         UpdateDisplay();
-        print(powerTime);
     }
 
     //Updates the display
