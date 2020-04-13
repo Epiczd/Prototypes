@@ -30,7 +30,6 @@ public class PlayerHealth : PlayerLives
         {
             Death();
         }
-        print(lives);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
