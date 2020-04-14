@@ -26,6 +26,9 @@ public class Punch : PlayerMovement
     //Rocketforce
     [SerializeField] private float rocketForce = 10f;
 
+    //How long a rocket lasts
+    [SerializeField] private float rocketTime = 1f;
+
     //The player's maximum amount of stamina
     private float maxStamina;
 
@@ -65,6 +68,8 @@ public class Punch : PlayerMovement
         {
             canAttack = false;
         }
+
+        print(rocketTime);
     }
 
     //Checks if the player is punching
@@ -228,9 +233,16 @@ public class Punch : PlayerMovement
                                     fired = true;
                                 }
 
-                                if (fired)
+                                if (fired && rocketTime > 0)
                                 {
                                     playersFist[0].transform.Translate(Vector2.right * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if(rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[0].transform.position = fistSpawn[0].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
                                 }
                                 break;
                             case "Left":
@@ -256,6 +268,13 @@ public class Punch : PlayerMovement
                                 if (fired)
                                 {
                                     playersFist[1].transform.Translate(Vector2.left * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[1].transform.position = fistSpawn[1].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
                                 }
                                 break;
                             case "Up":
@@ -281,6 +300,13 @@ public class Punch : PlayerMovement
                                 if (fired)
                                 {
                                     playersFist[2].transform.Translate(Vector2.up * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[2].transform.position = fistSpawn[2].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
                                 }
                                 break;
                             case "Down":
@@ -301,6 +327,13 @@ public class Punch : PlayerMovement
                                 if (fired)
                                 {
                                     playersFist[3].transform.Translate(Vector2.down * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[3].transform.position = fistSpawn[3].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
                                 }
                                 break;
                         }

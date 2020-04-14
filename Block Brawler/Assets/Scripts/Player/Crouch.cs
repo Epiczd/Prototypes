@@ -14,7 +14,6 @@ public class Crouch : StandCheck
     void Update()
     {
         Crouching();
-        print(canStand);
     }
 
     //Checks for the player to crouch
