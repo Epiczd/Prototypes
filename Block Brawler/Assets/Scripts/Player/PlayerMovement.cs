@@ -28,11 +28,15 @@ public class PlayerMovement : MonoBehaviour
     //Checks if the player is on a wall
     protected static bool onWall = false;
 
+    //Used in Wallcheck
+    protected static float bufferTime = 1f;
+
     // Update is called once per frame
     void Update()
     {
         Movement();
         Jump();
+        WallJump();
     }
 
     //Method that allows the player to move
@@ -66,10 +70,30 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         //If the player presses space, and is grounded or on a wall, they will jump
-        if(Input.GetButtonDown("Jump") && isGrounded || Input.GetButtonDown("Jump") && onWall)
+        if(Input.GetButtonDown("Jump") && isGrounded)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpSound.Play();
+        }
+    }
+
+    void WallJump()
+    {
+        if(Input.GetButtonDown("Jump") && onWall && bufferTime > 0f)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            
+            if(playerDirection == "Left")
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right, ForceMode2D.Impulse);
+            }
+            else if(playerDirection == "Right")
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left, ForceMode2D.Impulse);
+            }
+
+            jumpSound.Play();
+            bufferTime--;
         }
     }
 

@@ -68,8 +68,6 @@ public class Punch : PlayerMovement
         {
             canAttack = false;
         }
-
-        print(rocketTime);
     }
 
     //Checks if the player is punching

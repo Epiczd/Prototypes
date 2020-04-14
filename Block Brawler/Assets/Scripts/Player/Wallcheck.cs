@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Wallcheck : PlayerMovement
 {
+
     //Keeps wallcheck in place
     void Update()
     {
         Vector3 savedPosition = transform.position;
         transform.position = savedPosition;
+        print(bufferTime);
+
+        if(bufferTime >= 1f)
+        {
+            bufferTime = 1f;
+        }
     }
 
     //Checks for collision with trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
         //If the player is on a wall, onWall is true
-        if (collision.CompareTag("Wall"))
+        if (collision.CompareTag("Wall") && bufferTime > 0f)
         {
             onWall = true;
         }
@@ -28,6 +35,7 @@ public class Wallcheck : PlayerMovement
         if (collision.CompareTag("Wall"))
         {
             onWall = false;
+            bufferTime++;
         }    
     }
 }
