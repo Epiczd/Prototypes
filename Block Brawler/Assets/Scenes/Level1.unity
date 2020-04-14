@@ -208,6 +208,206 @@ Transform:
   m_Father: {fileID: 170222052}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &68664125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 68664126}
+  - component: {fileID: 68664132}
+  - component: {fileID: 68664131}
+  - component: {fileID: 68664130}
+  - component: {fileID: 68664129}
+  - component: {fileID: 68664128}
+  - component: {fileID: 68664127}
+  - component: {fileID: 68664133}
+  - component: {fileID: 68664134}
+  m_Layer: 0
+  m_Name: Banana Guard (Boss)
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &68664126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 64.78, y: 12.77, z: 0}
+  m_LocalScale: {x: 0.487, y: 2.282, z: 1}
+  m_Children: []
+  m_Father: {fileID: 627377343}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &68664127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5224f606636104bacbefbde83226e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!50 &68664128
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &68664129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5a0d2927c3286468c7a6265261f797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  jumpForce: 8
+  jumpSound: {fileID: 0}
+  playersFist: []
+  staminaBar: {fileID: 0}
+  Stamina: 5
+  punchSound: {fileID: 0}
+  rocketDistance: 0
+  fistSpawn: []
+  rocketForce: 10
+  rocketTime: 1
+  health: 20
+  isBoss: 1
+--- !u!61 &68664130
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!23 &68664131
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dc4f18b84d9e2a44d8abad92ae757a15, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &68664132
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &68664133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909abf38ca8065d419641e5894fd76c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossInfo: {fileID: 0}
+--- !u!114 &68664134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68664125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb77ed70e02486d4883e7fee34339a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  xMin: 60
+  xMax: 73
+  canJump: 1
+  jumpForce: 5
 --- !u!1 &90991757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,6 +2808,7 @@ Transform:
   - {fileID: 761146701}
   - {fileID: 1299698180}
   - {fileID: 1766782097}
+  - {fileID: 68664126}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2826,6 +3027,7 @@ MonoBehaviour:
   rocketForce: 10
   rocketTime: 1
   health: 10
+  isBoss: 0
 --- !u!50 &656846093
 Rigidbody2D:
   serializedVersion: 4
@@ -2862,6 +3064,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 2
   xMax: 7
+  canJump: 0
+  jumpForce: 5
 --- !u!114 &656846095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3277,6 +3481,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 7
   xMax: 9
+  canJump: 0
+  jumpForce: 5
 --- !u!50 &761146704
 Rigidbody2D:
   serializedVersion: 4
@@ -3322,6 +3528,7 @@ MonoBehaviour:
   rocketForce: 10
   rocketTime: 1
   health: 10
+  isBoss: 0
 --- !u!61 &761146706
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5495,6 +5702,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 29
   xMax: 33
+  canJump: 0
+  jumpForce: 5
 --- !u!50 &1299698183
 Rigidbody2D:
   serializedVersion: 4
@@ -5540,6 +5749,7 @@ MonoBehaviour:
   rocketForce: 10
   rocketTime: 1
   health: 10
+  isBoss: 0
 --- !u!61 &1299698185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6516,6 +6726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591626563}
   - component: {fileID: 1591626565}
+  - component: {fileID: 1591626564}
   m_Layer: 0
   m_Name: DeathPlain
   m_TagString: DeathPlain
@@ -6537,6 +6748,21 @@ Transform:
   m_Father: {fileID: 1636877719}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1591626564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591626562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23380f065c1786f49a25dcc4bd2fcc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  playerSpawn: {fileID: 697997761}
+  player: {fileID: 170222052}
 --- !u!61 &1591626565
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7587,6 +7813,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 37
   xMax: 43
+  canJump: 0
+  jumpForce: 5
 --- !u!50 &1766782100
 Rigidbody2D:
   serializedVersion: 4
@@ -7632,6 +7860,7 @@ MonoBehaviour:
   rocketForce: 10
   rocketTime: 1
   health: 10
+  isBoss: 0
 --- !u!61 &1766782102
 BoxCollider2D:
   m_ObjectHideFlags: 0

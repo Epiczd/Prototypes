@@ -10,7 +10,6 @@ public class Wallcheck : PlayerMovement
     {
         Vector3 savedPosition = transform.position;
         transform.position = savedPosition;
-        print(bufferTime);
 
         if(bufferTime >= 1f)
         {

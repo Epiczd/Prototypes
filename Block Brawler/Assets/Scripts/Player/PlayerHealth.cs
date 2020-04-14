@@ -37,15 +37,6 @@ public class PlayerHealth : PlayerLives
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        //If the player enters the death plain, they will die
-        if (collision.CompareTag("DeathPlain"))
-        {
-            Death();
-        }
-    }
-
     //When the players health is 0, they will die and respawn
     void Death()
     {

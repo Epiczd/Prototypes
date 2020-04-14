@@ -7,6 +7,9 @@ public class EnemyHealth : Punch
     //Amount of health the enemy has
     [SerializeField] private float health = 10f;
 
+    //Checks if the enemy is a boss
+    [SerializeField] private bool isBoss = false;
+
     //Time used to freeze the enemy
     private float waitTime = 1f;
 
@@ -46,6 +49,12 @@ public class EnemyHealth : Punch
         {
             waitTime = 0f;
             gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+        }
+
+        //If the enemy was a boss, boss mode is disabled
+        if (isBoss)
+        {
+            Boss.bossDead = true;
         }
         
     }
