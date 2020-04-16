@@ -10,8 +10,25 @@ public class EnemyHealth : Punch
     //Checks if the enemy is a boss
     [SerializeField] private bool isBoss = false;
 
+    //The bosses healthbar
+    [SerializeField] private BossHealthBar healthBar;
+
     //Time used to freeze the enemy
     private float waitTime = 1f;
+
+    //Enemies max health
+    private float maxHealth;
+
+    //On start, if the enemy is a boss, it sets the max health
+    void Start()
+    {
+        maxHealth = health;
+
+        if (isBoss)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+        }
+    }
 
     //Checks for collision
     void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +49,12 @@ public class EnemyHealth : Punch
         {
             Death();
         }
+
+        if (isBoss)
+        {
+            healthBar.SetHealth(health);
+        }
+        
     }
 
     //Activated when the enemy dies
