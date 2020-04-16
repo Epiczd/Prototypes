@@ -4990,6 +4990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077276269}
   - component: {fileID: 1077276270}
+  - component: {fileID: 1077276271}
   m_Layer: 0
   m_Name: Jumpable
   m_TagString: Ground
@@ -5037,6 +5038,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5976103, y: 0.041250706}
   m_EdgeRadius: 0
+--- !u!114 &1077276271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077276268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6109a8bad3e634d9cbdf045d81399e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossInfo: {fileID: 1695974779}
 --- !u!1 &1096355471
 GameObject:
   m_ObjectHideFlags: 0
