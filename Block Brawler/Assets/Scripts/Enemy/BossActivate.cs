@@ -12,4 +12,13 @@ public class BossActivate : Boss
             bossMode = true;
         }
     }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        //If the player leaves the boss area, bossMode is set to false
+        if (collision.CompareTag("Player"))
+        {
+            bossMode = false;
+        }
+    }
 }
