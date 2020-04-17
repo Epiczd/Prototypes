@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 192}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 131
+  controlID: 158
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -122,10 +122,10 @@ MonoBehaviour:
     y: 0
     width: 299
     height: 947
-  m_MinSize: {x: 231, y: 471}
-  m_MaxSize: {x: 10001, y: 14021}
+  m_MinSize: {x: 231, y: 492}
+  m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 38
+  controlID: 85
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,8 +172,8 @@ MonoBehaviour:
     y: 0
     width: 299
     height: 605
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 172
+  controlID: 129
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,10 +272,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 709, y: 471}
-  m_MaxSize: {x: 18004, y: 14021}
+  m_MinSize: {x: 709, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 171
+  controlID: 128
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -543,20 +543,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Enemy
+    - Assets/Scripts/Camera
   m_ViewMode: 1
   m_StartGridSize: 58
   m_LastFolders:
-  - Assets/Scripts/Enemy
+  - Assets/Scripts/Camera
   m_LastFoldersGridSize: 58
   m_LastProjectPath: C:\Users\epicz\Documents\GitHub\Prototypes\Block Brawler
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 7}
-    m_SelectedIDs: 68380000
-    m_LastClickedID: 14440
-    m_ExpandedIDs: 00000000563800006638000000ca9a3b
+    m_SelectedIDs: b6480000
+    m_LastClickedID: 18614
+    m_ExpandedIDs: 00000000763800008638000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -584,7 +584,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: c4330000
     m_LastClickedID: 13252
-    m_ExpandedIDs: 0000000056380000
+    m_ExpandedIDs: 0000000076380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -765,9 +765,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 61.92607, y: 3.330008, z: 0}
+    m_Target: {x: 65.51283, y: 11.930082, z: -8.488081}
     speed: 2
-    m_Value: {x: 61.92607, y: 3.3300066, z: 0}
+    m_Value: {x: 65.51283, y: 11.930082, z: -8.488081}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -817,9 +817,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22
+    m_Target: 10.725998
     speed: 2
-    m_Value: 22.000008
+    m_Value: 10.725998
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -873,9 +873,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 04360000
-      m_LastClickedID: 13828
-      m_ExpandedIDs: 30f9ffff6cfbffff50350000b0350000be35000034360000dc3600003c370000
+      m_SelectedIDs: 40edffff
+      m_LastClickedID: -4800
+      m_ExpandedIDs: 6cfbffff883400005e3500008e350000be350000cc350000f83500004c360000f4360000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

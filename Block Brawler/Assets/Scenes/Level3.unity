@@ -3111,6 +3111,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 2
   xMax: 7
+  canJump: 0
+  jumpForce: 5
 --- !u!50 &1419949960
 Rigidbody2D:
   serializedVersion: 4
@@ -3154,7 +3156,10 @@ MonoBehaviour:
   rocketDistance: 0
   fistSpawn: []
   rocketForce: 10
+  rocketTime: 1
   health: 10
+  isBoss: 0
+  healthBar: {fileID: 0}
 --- !u!61 &1419949962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4802,6 +4807,7 @@ GameObject:
   - component: {fileID: 2143455679}
   - component: {fileID: 2143455678}
   - component: {fileID: 2143455677}
+  - component: {fileID: 2143455686}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -4907,6 +4913,7 @@ MonoBehaviour:
   - {fileID: 1303437307}
   - {fileID: 164504652}
   rocketForce: 5
+  rocketTime: 1
 --- !u!114 &2143455681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5016,3 +5023,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143455675}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2143455686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143455675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30297015bc1725a419d82701ecfa7962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOfLvl: Level3

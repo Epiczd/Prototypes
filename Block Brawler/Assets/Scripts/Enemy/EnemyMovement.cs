@@ -27,7 +27,6 @@ public class EnemyMovement : MonoBehaviour
     {
         //As long as the enemy is alive, it will move
         Movement();
-        print(jumpTime);
     }
 
     //Allows the enemy to move

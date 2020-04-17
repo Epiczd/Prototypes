@@ -13,12 +13,6 @@ public class Coin : MonoBehaviour
     //Amount of coins the player has
     protected static int playerCoins;
 
-    //On Start, the player coins are replaced
-    void Start()
-    {
-        playerCoins = 0;
-    }
-
     //Checks for collision with the trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
