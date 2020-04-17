@@ -313,11 +313,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 488524312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6751bfe254b57764aa5fc1ea403e3092, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dab0866aed0e6d4c92b4a21170ad959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLvlButton: {fileID: 488524315}
-  nextLvl: Level1
+  continueButton: {fileID: 488524315}
 --- !u!114 &488524315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +565,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.122641504, g: 0.014462439, b: 0.03600765, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

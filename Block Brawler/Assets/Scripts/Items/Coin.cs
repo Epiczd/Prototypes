@@ -11,7 +11,15 @@ public class Coin : MonoBehaviour
     [SerializeField] private AudioSource coinSound;
 
     //Amount of coins the player has
-    protected static int playerCoins;
+    public static int playerCoins;
+
+    //The players coins at the start of the level
+    public static int coinsAtStart;
+
+    void Start()
+    {
+        coinsAtStart = playerCoins;
+    }
 
     //Checks for collision with the trigger
     void OnTriggerEnter2D(Collider2D collision)
