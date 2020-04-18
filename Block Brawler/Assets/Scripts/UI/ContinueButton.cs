@@ -20,10 +20,11 @@ public class ContinueButton : MonoBehaviour
     {
         /* If the player runs out of lives, and reaches gameover,
          * The player can press a continue button, to try again.
-         * Pressing this button will reset there coins to whatever it was when they started the level,
+         * Pressing this button will reset their coins and keys to whatever it was when they started the level,
          * And the player will respawn at the previous level
          */
         Coin.playerCoins = Coin.coinsAtStart;
+        Key.playerKeys = Key.keysAtStart;
         SceneManager.LoadScene(PlayerLocation.currentLevel);
     }
 }

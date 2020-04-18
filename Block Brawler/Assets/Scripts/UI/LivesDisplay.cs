@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class LivesDisplay : PlayerLives
 {
     //The lives counter
-    [SerializeField] private TextMeshProUGUI livesCounter;
+    [SerializeField] private Text livesCounter;
 
     // Update is called once per frame
     void Update()

@@ -16,6 +16,7 @@ public class Coin : MonoBehaviour
     //The players coins at the start of the level
     public static int coinsAtStart;
 
+    //On Start, coinsAtStart is set equal to the players current amount of coins
     void Start()
     {
         coinsAtStart = playerCoins;
@@ -25,8 +26,7 @@ public class Coin : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         /* If the player collects a coin,
-         * the players coin counter goes up,
-         * and the coin is disabled
+         * the players coin counter goes up, and the coin is disabled
          */
         if (collision.CompareTag("Player"))
         {
