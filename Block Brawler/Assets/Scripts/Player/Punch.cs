@@ -337,6 +337,137 @@ public class Punch : PlayerMovement
                         }
                     }
                     break;
+
+                case "Double Fist":
+                    /* If the powerup still has time, it will call this,
+                     * And allow the player to fire in any direction they want
+                     */
+                    if (Powerup.powerTime > 0)
+                    {
+                        //Checks which direction the player is firing
+                        switch (playerDirection)
+                        {
+                            case "Right":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[0].SetActive(true);
+
+                                    for (int i = 1; i < playersFist.Length; i++)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    playersFist[0].transform.position = fistSpawn[0].position;
+
+                                    fired = true;
+                                }
+
+                                if (fired && rocketTime > 0)
+                                {
+                                    playersFist[0].transform.Translate(Vector2.right * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[0].transform.position = fistSpawn[0].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
+                                }
+                                break;
+                            case "Left":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[1].SetActive(true);
+
+                                    for (int i = 0; i > -1; i--)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    for (int i = 2; i < playersFist.Length; i++)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    playersFist[1].transform.position = fistSpawn[1].position;
+
+                                    fired = true;
+                                }
+
+                                if (fired)
+                                {
+                                    playersFist[1].transform.Translate(Vector2.left * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[1].transform.position = fistSpawn[1].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
+                                }
+                                break;
+                            case "Up":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[2].SetActive(true);
+
+                                    for (int i = 1; i > -1; i--)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    for (int i = 3; i < playersFist.Length; i++)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    playersFist[2].transform.position = fistSpawn[2].position;
+
+                                    fired = true;
+                                }
+
+                                if (fired)
+                                {
+                                    playersFist[2].transform.Translate(Vector2.up * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[2].transform.position = fistSpawn[2].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
+                                }
+                                break;
+                            case "Down":
+                                if (Input.GetButtonDown("Attack"))
+                                {
+                                    playersFist[3].SetActive(true);
+
+                                    for (int i = 2; i > -1; i--)
+                                    {
+                                        playersFist[i].SetActive(false);
+                                    }
+
+                                    playersFist[3].transform.position = fistSpawn[3].position;
+
+                                    fired = true;
+                                }
+
+                                if (fired)
+                                {
+                                    playersFist[3].transform.Translate(Vector2.down * Time.smoothDeltaTime * rocketForce);
+                                    rocketTime -= Time.deltaTime;
+                                }
+                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
+                                {
+                                    playersFist[3].transform.position = fistSpawn[3].position;
+                                    fired = false;
+                                    rocketTime += Time.deltaTime;
+                                }
+                                break;
+                        }
+                    }
+                    break;
             }
         }
 

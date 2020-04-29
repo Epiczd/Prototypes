@@ -408,6 +408,8 @@ MonoBehaviour:
   moveSpeed: 10
   xMin: 60
   xMax: 73
+  yMin: 0
+  yMax: 0
   canJump: 1
   jumpForce: 5
 --- !u!114 &68664135
@@ -3256,6 +3258,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 2
   xMax: 7
+  yMin: 0
+  yMax: 0
   canJump: 0
   jumpForce: 5
 --- !u!114 &656846095
@@ -3674,6 +3678,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 7
   xMax: 9
+  yMin: 0
+  yMax: 0
   canJump: 0
   jumpForce: 5
 --- !u!50 &761146704
@@ -6100,6 +6106,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 29
   xMax: 33
+  yMin: 0
+  yMax: 0
   canJump: 0
   jumpForce: 5
 --- !u!50 &1299698183
@@ -7413,9 +7421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a2916b8057e243a824b9b0f6b360a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 1651717988}
-  timePowerLasts: 10
-  nameOfPower: Rocket Fist
+  powerUp: {fileID: 0}
+  timePowerLasts: 0
+  nameOfPower: 
   activeFist:
   - {fileID: 1014170839}
   - {fileID: 2140792467}
@@ -8316,6 +8324,8 @@ MonoBehaviour:
   moveSpeed: 5
   xMin: 37
   xMax: 43
+  yMin: 0
+  yMax: 0
   canJump: 0
   jumpForce: 5
 --- !u!50 &1766782100

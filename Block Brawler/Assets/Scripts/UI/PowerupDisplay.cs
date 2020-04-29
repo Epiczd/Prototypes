@@ -33,13 +33,14 @@ public class PowerupDisplay : Powerup
     void Update()
     {
         UpdateDisplay();
+        print(hasPower);
     }
 
     //Updates the display
     void UpdateDisplay()
     {
         //Switch that determines the active powerup
-        switch (nameOfPower)
+        switch (powerName)
         {
             //When there is no powerup active
             default:
@@ -58,6 +59,7 @@ public class PowerupDisplay : Powerup
                     timerText.text = powerTime.ToString("f0");
                     activeFist[0].enabled = false;
                     activeFist[1].enabled = true;
+                    activeFist[2].enabled = false;
                 }
                 else
                 {
@@ -69,7 +71,33 @@ public class PowerupDisplay : Powerup
                         activeFist[i].enabled = false;
                     }
                     hasPower = false;
-                    powerTime = timePowerLasts;
+                    powerTime = maxTime;
+                }
+                break;
+            //When the double fist powerup is active
+            case "Double Fist":
+                if(hasPower && powerTime > 0)
+                {
+                    powerTime -= Time.deltaTime;
+                    timerText.text = powerTime.ToString("f0");
+
+                    for (int i = 0; i < 2; i++)
+                    {
+                        activeFist[i].enabled = false;
+                    }
+
+                    activeFist[2].enabled = true;
+                }
+                {
+                    timerText.text = " ";
+                    activeFist[0].enabled = true;
+
+                    for (int i = 1; i < activeFist.Length; i++)
+                    {
+                        activeFist[i].enabled = false;
+                    }
+                    hasPower = false;
+                    powerTime = maxTime;
                 }
                 break;
         }
