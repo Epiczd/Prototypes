@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     //The area the enemy can move in
     [SerializeField] private float xMin;
     [SerializeField] private float xMax;
+    [SerializeField] private float yMin;
+    [SerializeField] private float yMax;
 
     //Determines if the enemy is allowed to jump
     [SerializeField] private bool canJump;
@@ -32,67 +34,45 @@ public class EnemyMovement : MonoBehaviour
     //Allows the enemy to move
     void Movement()
     {
-        /* If the enemy's x position is greater than or equal to xMin,
-         * and less than xMax, the enemy will move right,
-         * If the enemy's x position is less than or equal to xMax,
-         * and greater than xMin, the enemy will move left.
-         */
-
-        if (transform.position.x > xMax)
-        {
-            movingDirection = Vector2.left;
-        }
-        else if (transform.position.x < xMin)
-        {
-            movingDirection = Vector2.right;
-        }
-
         if(canJump == false)
         {
-            //Controls the enemy's movement
-            transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
-        }
-
-        /*
-        if (canJump && jumpTime > 0f)
-        {
-            //Controls the enemy's movement
-            transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
-            jumpForce -= Time.deltaTime;
-        }
-        else if(canJump && jumpTime <= 0f)
-        {
-            //Controls the enemy's movement
-            transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
-        }
-        */
-
-        if (canJump)
-        {
-            switch (jumpTime)
+            /* If the enemy's x position is greater than or equal to xMin,
+            * and less than xMax, the enemy will move right,
+            * If the enemy's x position is less than or equal to xMax,
+            * and greater than xMin, the enemy will move left.
+            */
+            if (transform.position.x > xMax)
             {
-                case 1f:
-                    //Controls the enemy's movement
-                    transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
-                    gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
-                    jumpForce -= Time.deltaTime;
-                    break;
-                case 0f:
-                    transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
-                    break;
+                movingDirection = Vector2.left;
             }
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (canJump)
-        {
-            if (collision.CompareTag("Ground"))
+            else if (transform.position.x < xMin)
             {
-                jumpTime = 1f;
+                movingDirection = Vector2.right;
             }
+            //Controls the enemy's movement
+            transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
         }
+        else
+        {
+            /* If the enemy's y position is greater than or equal to yMin,
+             * and less than yMax, the enemy will jump,
+             * If the enemy's y position is less than or equal to yMax,
+             * and greater than yMin, the enemy will fall down
+             */
+            if(transform.position.y > yMax)
+            {
+                movingDirection = Vector2.down;
+            }
+            else if(transform.position.y < yMin)
+            {
+                movingDirection = Vector2.up;
+            }
+            //Controls the enemy's movement
+            transform.Translate(movingDirection * Time.deltaTime * jumpForce);
+        }
+
+        //Controls the enemy's movement
+        //transform.Translate(movingDirection * Time.deltaTime * moveSpeed);
     }
+    
 }

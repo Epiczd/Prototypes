@@ -63,6 +63,7 @@ public class EnemyHealth : Punch
         /* If the enemy dies, The enemy falls over dead, and the enemy stops moving,
          * The enemy will also stop doing damage, and will just lay on the floor
          */
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         GetComponent<EnemyMovement>().enabled = false;
         gameObject.tag = "Untagged";
         gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 5f, ForceMode2D.Force);
