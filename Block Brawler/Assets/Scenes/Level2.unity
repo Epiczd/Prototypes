@@ -6840,6 +6840,7 @@ MonoBehaviour:
   powerUp: {fileID: 0}
   timePowerLasts: 0
   nameOfPower: 
+  nameOfP: 0
   activeFist:
   - {fileID: 1562735211}
   - {fileID: 76506662}
@@ -7646,6 +7647,7 @@ MonoBehaviour:
   powerUp: {fileID: 1996389690}
   timePowerLasts: 16
   nameOfPower: Double Fist
+  nameOfP: 1
 --- !u!61 &1996389694
 BoxCollider2D:
   m_ObjectHideFlags: 0

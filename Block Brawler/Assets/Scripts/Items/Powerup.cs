@@ -10,8 +10,7 @@ public class Powerup : MonoBehaviour
     //Time the powerup lasts
     [SerializeField] private float timePowerLasts;
 
-    //Name of the powerup
-    [SerializeField] private string nameOfPower;
+    [SerializeField] private PowerName nameOfP;
 
     //Used in HUD
     public static float powerTime;
@@ -20,7 +19,7 @@ public class Powerup : MonoBehaviour
     public static bool hasPower = false;
 
     //Used in other scripts that can't inherit from powerup
-    public static string powerName;
+    public static PowerName powerName;
 
     //Max time powerup will last
     protected static float maxTime;
@@ -30,6 +29,7 @@ public class Powerup : MonoBehaviour
      */
     void Start()
     {
+        print(nameOfP);
         maxTime = powerTime;
     }
 
@@ -43,9 +43,17 @@ public class Powerup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             hasPower = true;
-            powerName = nameOfPower;
+            powerName = nameOfP;
             powerTime = timePowerLasts;
             powerUp.SetActive(false);
         }
     }
 }
+
+//Contains all possible powerups
+public enum PowerName
+{
+    RocketFist,
+    DoubleFist,
+}
+

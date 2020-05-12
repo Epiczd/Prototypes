@@ -206,7 +206,7 @@ public class Punch : PlayerMovement
             switch (Powerup.powerName)
             {
                 //Called if rocket fist is active
-                case "Rocket Fist":
+                case PowerName.RocketFist:
 
                     /* If the powerup still has time, it will call this,
                      * And allow the player to fire in any direction they want
@@ -338,7 +338,7 @@ public class Punch : PlayerMovement
                     }
                     break;
 
-                case "Double Fist":
+                case PowerName.DoubleFist:
                     /* If the powerup still has time, it will call this,
                      * And allow the player to fire in any direction they want
                      */

@@ -27,13 +27,14 @@ public class PowerupDisplay : Powerup
         {
             activeFist[i].enabled = false;
         }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateDisplay();
-        print(hasPower);
+        //print(hasPower);
     }
 
     //Updates the display
@@ -52,7 +53,7 @@ public class PowerupDisplay : Powerup
                 }
                 break;
             //When the Rocket Fist powerup is active
-            case "Rocket Fist":
+            case PowerName.RocketFist:
                 if (hasPower && powerTime > 0)
                 {
                     powerTime -= Time.deltaTime;
@@ -75,7 +76,7 @@ public class PowerupDisplay : Powerup
                 }
                 break;
             //When the double fist powerup is active
-            case "Double Fist":
+            case PowerName.DoubleFist:
                 if(hasPower && powerTime > 0)
                 {
                     powerTime -= Time.deltaTime;
