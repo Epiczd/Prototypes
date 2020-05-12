@@ -8,6 +8,11 @@ public class Punch : PlayerMovement
     //The player's fist (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
     [SerializeField] private GameObject[] playersFist;
 
+    /* Used whhen the player has double fist active,
+     * (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
+     */
+    [SerializeField] private GameObject[] playerSecondFist;
+
     //Player's stamina bar
     [SerializeField] private StaminaBar staminaBar;
 
@@ -22,6 +27,9 @@ public class Punch : PlayerMovement
 
     //Spawn points for the fists (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
     [SerializeField] private Transform[] fistSpawn;
+
+    //Spawn points for double fist (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
+    [SerializeField] private Transform[] secondFistSpawn;
 
     //Rocketforce
     [SerializeField] private float rocketForce = 10f;
@@ -41,12 +49,16 @@ public class Punch : PlayerMovement
     //Fires the rocket fist
     private bool fired = false;
 
+    //Time Between the first and second fist being drawn
+    private float timeBtwDouble = 1;
+
     //On start, the player's fist is not drawn, and is disabled
     void Start()
     {
         for (int i = 0; i < playersFist.Length; i++)
         {
             playersFist[i].SetActive(false);
+            //playerSecondFist[i].SetActive(false);
         }
 
         maxStamina = Stamina;
@@ -91,7 +103,7 @@ public class Punch : PlayerMovement
                     }
 
                     break;
-                case "Right":
+                case PlayerDirection.Right:
 
                     //If the player presses left mouse, or f, they will attack
                     if (Input.GetButton("Attack") && canAttack)
@@ -115,7 +127,7 @@ public class Punch : PlayerMovement
                         }
                     }
                     break;
-                case "Left":
+                case PlayerDirection.Left:
 
                     if (Input.GetButton("Attack") && canAttack)
                     {
@@ -143,7 +155,7 @@ public class Punch : PlayerMovement
                         }
                     }
                     break;
-                case "Up":
+                case PlayerDirection.Up:
                     if (Input.GetButton("Attack")&& canAttack)
                     {
                         playersFist[2].SetActive(true);
@@ -170,7 +182,7 @@ public class Punch : PlayerMovement
                         }
                     }
                     break;
-                case "Down":
+                case PlayerDirection.Down:
                     if (Input.GetButton("Attack") && canAttack)
                     {
                         playersFist[3].SetActive(true);
@@ -216,7 +228,7 @@ public class Punch : PlayerMovement
                         //Checks which direction the player is firing
                         switch (playerDirection)
                         {
-                            case "Right":
+                            case PlayerDirection.Right:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[0].SetActive(true);
@@ -243,7 +255,7 @@ public class Punch : PlayerMovement
                                     rocketTime += Time.deltaTime;
                                 }
                                 break;
-                            case "Left":
+                            case PlayerDirection.Left:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[1].SetActive(true);
@@ -275,7 +287,7 @@ public class Punch : PlayerMovement
                                     rocketTime += Time.deltaTime;
                                 }
                                 break;
-                            case "Up":
+                            case PlayerDirection.Up:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[2].SetActive(true);
@@ -307,7 +319,7 @@ public class Punch : PlayerMovement
                                     rocketTime += Time.deltaTime;
                                 }
                                 break;
-                            case "Down":
+                            case PlayerDirection.Down:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[3].SetActive(true);
@@ -347,7 +359,7 @@ public class Punch : PlayerMovement
                         //Checks which direction the player is firing
                         switch (playerDirection)
                         {
-                            case "Right":
+                            case PlayerDirection.Right:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[0].SetActive(true);
@@ -374,7 +386,7 @@ public class Punch : PlayerMovement
                                     rocketTime += Time.deltaTime;
                                 }
                                 break;
-                            case "Left":
+                            case PlayerDirection.Left:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[1].SetActive(true);
@@ -406,7 +418,7 @@ public class Punch : PlayerMovement
                                     rocketTime += Time.deltaTime;
                                 }
                                 break;
-                            case "Up":
+                            case PlayerDirection.Up:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[2].SetActive(true);
@@ -438,7 +450,7 @@ public class Punch : PlayerMovement
                                     rocketTime += Time.deltaTime;
                                 }
                                 break;
-                            case "Down":
+                            case PlayerDirection.Down:
                                 if (Input.GetButtonDown("Attack"))
                                 {
                                     playersFist[3].SetActive(true);

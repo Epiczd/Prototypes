@@ -10,6 +10,7 @@ public class Powerup : MonoBehaviour
     //Time the powerup lasts
     [SerializeField] private float timePowerLasts;
 
+    //Name of the powerup
     [SerializeField] private PowerName nameOfP;
 
     //Used in HUD

@@ -82,13 +82,15 @@ public class PowerupDisplay : Powerup
                     powerTime -= Time.deltaTime;
                     timerText.text = powerTime.ToString("f0");
 
+                    activeFist[2].enabled = true;
+
                     for (int i = 0; i < 2; i++)
                     {
                         activeFist[i].enabled = false;
                     }
 
-                    activeFist[2].enabled = true;
                 }
+                else
                 {
                     timerText.text = " ";
                     activeFist[0].enabled = true;

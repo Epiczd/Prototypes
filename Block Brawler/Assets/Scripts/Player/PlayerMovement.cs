@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     protected static bool facingUp = false;
 
     //Direction the player is facing
-    protected static string playerDirection = "Right";
+    protected static PlayerDirection playerDirection = PlayerDirection.Right;
 
     //Checks if the player is grounded
     protected static bool isGrounded = false;
@@ -50,19 +50,19 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButton("Right"))
         {
-            playerDirection = "Right";
+            playerDirection = PlayerDirection.Right;
         }
         else if(Input.GetButton("Left"))
         {
-            playerDirection = "Left";
+            playerDirection = PlayerDirection.Left;
         }
         else if(Input.GetButton("Up"))
         {
-            playerDirection = "Up";
+            playerDirection = PlayerDirection.Up;
         }
         else if (Input.GetButton("Down"))
         {
-            playerDirection = "Down";
+            playerDirection = PlayerDirection.Down;
         }
 
     }
@@ -83,11 +83,11 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             
-            if(playerDirection == "Left")
+            if(playerDirection == PlayerDirection.Left)
             {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right, ForceMode2D.Impulse);
             }
-            else if(playerDirection == "Right")
+            else if(playerDirection == PlayerDirection.Right)
             {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left, ForceMode2D.Impulse);
             }
@@ -97,4 +97,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+}
+
+//Direction the player is facing/moving
+public enum PlayerDirection
+{
+    Right,
+    Left,
+    Up,
+    Down
 }
