@@ -30,7 +30,7 @@ public class Powerup : MonoBehaviour
      */
     void Start()
     {
-        print(nameOfP);
+        //print(nameOfP);
         maxTime = powerTime;
     }
 
