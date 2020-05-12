@@ -28,9 +28,6 @@ public class Punch : PlayerMovement
     //Spawn points for the fists (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
     [SerializeField] private Transform[] fistSpawn;
 
-    //Spawn points for double fist (0 is right fist, 1 is left fist, 2 is up fist, 3 is down fist)
-    [SerializeField] private Transform[] secondFistSpawn;
-
     //Rocketforce
     [SerializeField] private float rocketForce = 10f;
 
@@ -46,11 +43,10 @@ public class Punch : PlayerMovement
     //Amount of damage dealt with a punch
     protected static float punchDamage = 5f;
 
+    private bool isAttacking = false;
+
     //Fires the rocket fist
     private bool fired = false;
-
-    //Time Between the first and second fist being drawn
-    private float timeBtwDouble = 1;
 
     //On start, the player's fist is not drawn, and is disabled
     void Start()
@@ -58,7 +54,7 @@ public class Punch : PlayerMovement
         for (int i = 0; i < playersFist.Length; i++)
         {
             playersFist[i].SetActive(false);
-            //playerSecondFist[i].SetActive(false);
+            playerSecondFist[i].SetActive(false);
         }
 
         maxStamina = Stamina;
@@ -71,6 +67,24 @@ public class Punch : PlayerMovement
         Punching();
 
         staminaBar.SetStamina(Stamina);
+
+        //Plays the sound effect when punching
+        if (Input.GetButtonDown("Attack"))
+        {
+            punchSound.Play();
+        }
+
+        if (isAttacking && Stamina > 0)
+        {
+            Stamina -= Time.deltaTime * 2.5f;
+        }
+        else
+        {
+            if (Stamina < maxStamina)
+            {
+                Stamina += Time.deltaTime * 2.5f;
+            }
+        }
 
         if(Stamina > 0f)
         {
@@ -92,6 +106,7 @@ public class Punch : PlayerMovement
             for (int i = 0; i < playersFist.Length; i++)
             {
                 playersFist[i].transform.position = fistSpawn[i].position;
+                playerSecondFist[i].SetActive(false);
             }
 
             switch (playerDirection)
@@ -115,16 +130,13 @@ public class Punch : PlayerMovement
                             playersFist[i].SetActive(false);
                         }
 
-                        Stamina -= Time.deltaTime * 2.5f;
+                        isAttacking = true;
                     }
                     else
                     {
                         playersFist[0].SetActive(false);
 
-                        if (Stamina < maxStamina)
-                        {
-                            Stamina += Time.deltaTime * 2.5f;
-                        }
+                        isAttacking = false;
                     }
                     break;
                 case PlayerDirection.Left:
@@ -142,17 +154,14 @@ public class Punch : PlayerMovement
                         {
                             playersFist[i].SetActive(false);
                         }
-                        
-                        Stamina -= Time.deltaTime * 2.5f;
+
+                        isAttacking = true;
                     }
                     else
                     {
                         playersFist[1].SetActive(false);
 
-                        if (Stamina < maxStamina)
-                        {
-                            Stamina += Time.deltaTime * 2.5f;
-                        }
+                        isAttacking = false;
                     }
                     break;
                 case PlayerDirection.Up:
@@ -170,16 +179,13 @@ public class Punch : PlayerMovement
                             playersFist[i].SetActive(false);
                         }
 
-                        Stamina -= Time.deltaTime * 2.5f;
+                        isAttacking = true;
                     }
                     else
                     {
                         playersFist[2].SetActive(false);
 
-                        if (Stamina < maxStamina)
-                        {
-                            Stamina += Time.deltaTime * 2.5f;
-                        }
+                        isAttacking = false;
                     }
                     break;
                 case PlayerDirection.Down:
@@ -192,24 +198,15 @@ public class Punch : PlayerMovement
                             playersFist[i].SetActive(false);
                         }
 
-                        Stamina -= Time.deltaTime * 2.5f;
+                        isAttacking = true;
                     }
                     else
                     {
                         playersFist[3].SetActive(false);
 
-                        if (Stamina < maxStamina)
-                        {
-                            Stamina += Time.deltaTime * 2.5f;
-                        }
+                        isAttacking = false;
                     }
                     break;
-            }
-
-            //Plays the sound effect when punching
-            if (Input.GetButtonDown("Attack"))
-            {
-                punchSound.Play();
             }
         }
         else
@@ -239,7 +236,7 @@ public class Punch : PlayerMovement
                                     }
 
                                     playersFist[0].transform.position = fistSpawn[0].position;
-
+                                    
                                     fired = true;
                                 }
 
@@ -352,7 +349,8 @@ public class Punch : PlayerMovement
 
                 case PowerName.DoubleFist:
                     /* If the powerup still has time, it will call this,
-                     * And allow the player to fire in any direction they want
+                     * And allow the player to punch with two fists at once,
+                     * This allows for the player to hit enemies farther away, and possibly deal double damage
                      */
                     if (Powerup.powerTime > 0)
                     {
@@ -360,121 +358,99 @@ public class Punch : PlayerMovement
                         switch (playerDirection)
                         {
                             case PlayerDirection.Right:
-                                if (Input.GetButtonDown("Attack"))
+                                if (Input.GetButton("Attack") && Stamina > 0)
                                 {
                                     playersFist[0].SetActive(true);
+                                    playerSecondFist[0].SetActive(true);
 
                                     for (int i = 1; i < playersFist.Length; i++)
                                     {
                                         playersFist[i].SetActive(false);
+                                        playerSecondFist[i].SetActive(false);
                                     }
 
-                                    playersFist[0].transform.position = fistSpawn[0].position;
-
-                                    fired = true;
+                                    isAttacking = true;
                                 }
-
-                                if (fired && rocketTime > 0)
+                                else
                                 {
-                                    playersFist[0].transform.Translate(Vector2.right * Time.smoothDeltaTime * rocketForce);
-                                    rocketTime -= Time.deltaTime;
-                                }
-                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
-                                {
-                                    playersFist[0].transform.position = fistSpawn[0].position;
-                                    fired = false;
-                                    rocketTime += Time.deltaTime;
+                                    isAttacking = false;
+                                    playersFist[0].SetActive(false);
+                                    playerSecondFist[0].SetActive(false);
                                 }
                                 break;
                             case PlayerDirection.Left:
-                                if (Input.GetButtonDown("Attack"))
+                                if (Input.GetButton("Attack") && Stamina > 0)
                                 {
                                     playersFist[1].SetActive(true);
+                                    playerSecondFist[1].SetActive(true);
 
                                     for (int i = 0; i > -1; i--)
                                     {
                                         playersFist[i].SetActive(false);
+                                        playerSecondFist[i].SetActive(false);
                                     }
 
                                     for (int i = 2; i < playersFist.Length; i++)
                                     {
                                         playersFist[i].SetActive(false);
+                                        playerSecondFist[i].SetActive(false);
                                     }
 
-                                    playersFist[1].transform.position = fistSpawn[1].position;
-
-                                    fired = true;
+                                    isAttacking = true;
                                 }
-
-                                if (fired)
+                                else
                                 {
-                                    playersFist[1].transform.Translate(Vector2.left * Time.smoothDeltaTime * rocketForce);
-                                    rocketTime -= Time.deltaTime;
-                                }
-                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
-                                {
-                                    playersFist[1].transform.position = fistSpawn[1].position;
-                                    fired = false;
-                                    rocketTime += Time.deltaTime;
+                                    isAttacking = false;
+                                    playersFist[1].SetActive(false);
+                                    playerSecondFist[1].SetActive(false);
                                 }
                                 break;
                             case PlayerDirection.Up:
-                                if (Input.GetButtonDown("Attack"))
+                                if (Input.GetButton("Attack") && Stamina > 0)
                                 {
                                     playersFist[2].SetActive(true);
+                                    playerSecondFist[2].SetActive(true);
 
                                     for (int i = 1; i > -1; i--)
                                     {
                                         playersFist[i].SetActive(false);
+                                        playerSecondFist[i].SetActive(false);
                                     }
 
                                     for (int i = 3; i < playersFist.Length; i++)
                                     {
                                         playersFist[i].SetActive(false);
+                                        playerSecondFist[i].SetActive(false);
                                     }
 
-                                    playersFist[2].transform.position = fistSpawn[2].position;
-
-                                    fired = true;
+                                    isAttacking = true;
                                 }
-
-                                if (fired)
+                                else
                                 {
-                                    playersFist[2].transform.Translate(Vector2.up * Time.smoothDeltaTime * rocketForce);
-                                    rocketTime -= Time.deltaTime;
-                                }
-                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
-                                {
-                                    playersFist[2].transform.position = fistSpawn[2].position;
-                                    fired = false;
-                                    rocketTime += Time.deltaTime;
+                                    isAttacking = false;
+                                    playersFist[2].SetActive(false);
+                                    playerSecondFist[2].SetActive(false);
                                 }
                                 break;
                             case PlayerDirection.Down:
-                                if (Input.GetButtonDown("Attack"))
+                                if (Input.GetButton("Attack") && Stamina > 0)
                                 {
                                     playersFist[3].SetActive(true);
+                                    playerSecondFist[3].SetActive(true);
 
                                     for (int i = 2; i > -1; i--)
                                     {
                                         playersFist[i].SetActive(false);
+                                        playerSecondFist[i].SetActive(false);
                                     }
 
-                                    playersFist[3].transform.position = fistSpawn[3].position;
-
-                                    fired = true;
+                                    isAttacking = true;
                                 }
-
-                                if (fired)
+                                else
                                 {
-                                    playersFist[3].transform.Translate(Vector2.down * Time.smoothDeltaTime * rocketForce);
-                                    rocketTime -= Time.deltaTime;
-                                }
-                                else if (rocketTime >= 0f || rocketTime <= 0f && rocketTime < 1f)
-                                {
-                                    playersFist[3].transform.position = fistSpawn[3].position;
-                                    fired = false;
-                                    rocketTime += Time.deltaTime;
+                                    isAttacking = false;
+                                    playersFist[3].SetActive(false);
+                                    playerSecondFist[3].SetActive(false);
                                 }
                                 break;
                         }
