@@ -27,8 +27,6 @@ public class FallingPlatform : MonoBehaviour
     {
         Fall();
 
-        print(falling);
-
         if(this.transform.position.y <= maxFall)
         {
             falling = false;
